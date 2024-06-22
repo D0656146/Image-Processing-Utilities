@@ -38,5 +38,30 @@ example:
 python mark_shade.py -i image.jpg -b 30 -g 5 -c 30 100 -s 100 10000
 ```
 
-## 其他
-在 example_images 裡可以看到效果
+## 效果
+
+參數
+
+```
+python main.py -i pigeon.jpg -b 30 -c 30 100 -s 100 1000000
+```
+
+原圖
+
+![原圖](<example_images/pigeon/pigeon.jpg> "原圖")
+
+灰階
+
+![灰階](<example_images/pigeon/gray.jpg> "灰階")
+
+邊緣
+
+![邊緣](<example_images/pigeon/edges.jpg> "邊緣")
+
+原圖+暗區標記
+
+![原圖+暗區標記](<example_images/pigeon/contours.jpg> "原圖+暗區標記")
+
+灰階+暗區標記
+
+![灰階+暗區標記](<example_images/pigeon/brightness.jpg> "灰階+暗區標記")

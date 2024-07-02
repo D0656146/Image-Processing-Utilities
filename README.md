@@ -65,3 +65,59 @@ python main.py -i pigeon.jpg -b 30 -c 30 100 -s 100 1000000
 灰階+暗區標記
 
 ![灰階+暗區標記](<example_images/pigeon/brightness.jpg> "灰階+暗區標記")
+
+# Pruning
+
+## 目標
+給定 1px 寬帶分支的線條，將小於一給定長度的分岔消除。
+
+## 步驟
+
+1. 使用相鄰像素中輪廓點的數量來判斷該點為尖端(1)、線條(2)或分岔點(>2)
+2. 找到所有的端點，並開始沿著線條方向向分支點搜索並記錄長度
+3. 如果長度低於給定值則記錄並在最後一起移除並輸出
+
+## 用法
+
+```
+usage: pruning.py [-h] [-i IMAGE] [-l LENGTH]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i IMAGE, --image IMAGE
+                        image name
+  -l LENGTH, --length LENGTH
+                        max length to prune
+```
+
+example:
+```
+python pruning.py -i image.jpg -l 5
+```
+
+## 效果
+
+原圖
+
+![原圖](<pruning_images/iscoolrev.bmp> "原圖")
+
+```
+python pruning.py -i iscool.bmp -l 3
+```
+剪 3 格以下，可以看見 I 的左下和 S 的兩個尾巴被剪了
+
+![剪 3 格以下](<pruning_images/pruned_image_3.bmp> "剪 3 格以下")
+
+```
+python pruning.py -i iscool.bmp -l 15
+```
+剪 15 格以下，可以看見 I 的左上和 L 的尾巴也被剪了
+
+![剪 15 格以下](<pruning_images/pruned_image_15.bmp> "剪 15 格以下")
+
+```
+python pruning.py -i iscool.bmp -l 30
+```
+剪 30 格以下，可以看見最長的 C 頭上也被剪了
+
+![剪 30 格以下](<pruning_images/pruned_image_30.bmp> "剪 30 格以下")
